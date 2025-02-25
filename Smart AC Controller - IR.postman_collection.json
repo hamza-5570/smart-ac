@@ -1,0 +1,994 @@
+{
+	"info": {
+		"_postman_id": "74c0f560-911e-4ee3-8a0c-e7dac483fcfd",
+		"name": "Smart AC Controller - IR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3561549"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mettlesoft\",\r\n    \"email\": \"it@mettlesoft.com.au\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/auth/sign-up",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password (Step I)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"it@mettlesoft.com.au\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/auth/forgot-password",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/auth/reset-password/token_from_email",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password",
+								"token_from_email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"it@mettlesoft.com.au\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/auth/sign-in",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/auth/verify-email/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZXdVc2VyIjp7Im90cCI6bnVsbCwicm9sZSI6IlVzZXIiLCJibG9ja2VkIjoiTm8iLCJzZWN1cml0eUtleSI6IjE2ODA4Njg2NDQ4MTAiLCJfaWQiOiI2NDMwMDUyYzU3NGQxNzJhZjA4OTIyMzQiLCJuYW1lIjoiU291cmF2IFNhc21hbCIsImVtYWlsIjoic291cmF2QGFubmV4Ynl0ZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRZZExvYjBtemRPb0g5MkJieUlFYWFlVTlTZy4zeTR3RjAzc2tXcnB4Ym1BYUVVWlZHclJmUyJ9LCJpYXQiOjE2ODA4Njg2NTJ9.qdm4hnlpq3jhfL0qJV1kEqyTOSPSYKNrSuRmD__uRIM",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify-email",
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZXdVc2VyIjp7Im90cCI6bnVsbCwicm9sZSI6IlVzZXIiLCJibG9ja2VkIjoiTm8iLCJzZWN1cml0eUtleSI6IjE2ODA4Njg2NDQ4MTAiLCJfaWQiOiI2NDMwMDUyYzU3NGQxNzJhZjA4OTIyMzQiLCJuYW1lIjoiU291cmF2IFNhc21hbCIsImVtYWlsIjoic291cmF2QGFubmV4Ynl0ZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRZZExvYjBtemRPb0g5MkJieUlFYWFlVTlTZy4zeTR3RjAzc2tXcnB4Ym1BYUVVWlZHclJmUyJ9LCJpYXQiOjE2ODA4Njg2NTJ9.qdm4hnlpq3jhfL0qJV1kEqyTOSPSYKNrSuRmD__uRIM"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Can Access",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TAKEN}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/auth/can-access",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"can-access"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Device",
+			"item": [
+				{
+					"name": "Register Device",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ir_remote\",\r\n    \"codeName\": \"ir_smart_ac_screen\",\r\n    \"deviceName\": \"AccelSmart Smart AC Pro\",\r\n    \"provider\": \"AccelSmart\",\r\n    \"deviceInfo\": {\r\n        \"remoteId\": \"43\"\r\n    },\r\n    \"nickname\": \"Master Bedroom\",\r\n    \"deviceSerial\": \"56711999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/register",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/my-devices",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"my-devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/details/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"details",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/status/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"status",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Device Name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickname\": \"My Home AC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/update-device-name/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"update-device-name",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Device Remote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"remote\": {\r\n        \"brand\": 1,\r\n        \"remoteId\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/update-device-remote/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"update-device-remote",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"protocol\": 24,\r\n    \"model\": 3,\r\n    \"power\": true,\r\n    \"mode\": 3,\r\n    \"degrees\": 30,\r\n    \"celsius\": true,\r\n    \"fanspeed\": 0,\r\n    \"swingv\": -1,\r\n    \"swingh\": -1,\r\n    \"quiet\": false,\r\n    \"turbo\": false,\r\n    \"econo\": false,\r\n    \"light\": true,\r\n    \"filter\": false,\r\n    \"clean\": false,\r\n    \"beep\": true,\r\n    \"sleep\": -1,\r\n    \"clock\": -1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/status/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"status",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Link Custom Remote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"deviceId\":\"65ee653e1faa2eef2b7e810b\",\r\n    \"remoteId\":\"66190787fe07564124de68ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/link-remote",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"link-remote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Environment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"humidity\": 43,\r\n    \"temp\": 26\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/env/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"env",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get env History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/history/env/:id/:date",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"history",
+								"env",
+								":id",
+								":date"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "645674867a1c000037001ed2"
+								},
+								{
+									"key": "date",
+									"value": "07-05-2023"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{ACCESS_TAKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cloner",
+			"item": [
+				{
+					"name": "Save Cloned Remote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test\",\r\n    \"brand\": \"Renai\",\r\n    \"model\": \"001\",\r\n    \"year\": \"2000\",\r\n    \"country\": \"AU\",\r\n    \"modeAvl\": {\r\n        \"cool\": true,\r\n        \"heat\": false,\r\n        \"dry\": true,\r\n        \"fan\": true\r\n    },\r\n    \"codes\": {\r\n        \"cool\": {\r\n            \"v_swing_on\": {\r\n                \"fan_lo\": {\r\n                    \"t21\": [\r\n                        8904,\r\n                        4548,\r\n                        498,\r\n                        1682,\r\n                        538,\r\n                        1740,\r\n                        482,\r\n                        562,\r\n                        534,\r\n                        614,\r\n                        484,\r\n                        558,\r\n                        538,\r\n                        616,\r\n                        482,\r\n                        1682,\r\n                        540,\r\n                        1706,\r\n                        514,\r\n                        1682,\r\n                        540,\r\n                        1678,\r\n                        542,\r\n                        1724,\r\n                        498,\r\n                        562,\r\n                        538,\r\n                        560,\r\n                        536,\r\n                        1740,\r\n                        482,\r\n                        1682,\r\n                        538,\r\n                        564,\r\n                        534,\r\n                        558,\r\n                        540,\r\n                        614,\r\n                        482,\r\n                        558,\r\n                        540,\r\n                        558,\r\n                        538,\r\n                        558,\r\n                        542,\r\n                        1736,\r\n                        482,\r\n                        1740,\r\n                        482,\r\n                        1686,\r\n                        536,\r\n                        558,\r\n                        538,\r\n                        616,\r\n                        482,\r\n                        616,\r\n                        484,\r\n                        558,\r\n                        540,\r\n                        614,\r\n                        484,\r\n                        612,\r\n                        482,\r\n                        562,\r\n                        640,\r\n                        520,\r\n                        474,\r\n                        614,\r\n                        484,\r\n                        560,\r\n                        538,\r\n                        562,\r\n                        536,\r\n                        614,\r\n                        488,\r\n                        616,\r\n                        484,\r\n                        1732,\r\n                        482,\r\n                        1640,\r\n                        582,\r\n                        562,\r\n                        536,\r\n                        614,\r\n                        484,\r\n                        614,\r\n                        482,\r\n                        582,\r\n                        514,\r\n                        614,\r\n                        482,\r\n                        614,\r\n                        482,\r\n                        614,\r\n                        482,\r\n                        584,\r\n                        512,\r\n                        616,\r\n                        484,\r\n                        562,\r\n                        536,\r\n                        558,\r\n                        538,\r\n                        616,\r\n                        484,\r\n                        614,\r\n                        484,\r\n                        560,\r\n                        536,\r\n                        614,\r\n                        484,\r\n                        562,\r\n                        534,\r\n                        1682,\r\n                        540,\r\n                        614,\r\n                        482,\r\n                        614,\r\n                        482,\r\n                        616,\r\n                        482,\r\n                        614,\r\n                        482,\r\n                        564,\r\n                        532,\r\n                        616,\r\n                        482,\r\n                        562,\r\n                        536,\r\n                        556,\r\n                        540,\r\n                        614,\r\n                        482,\r\n                        522,\r\n                        576,\r\n                        614,\r\n                        482,\r\n                        616,\r\n                        482,\r\n                        616,\r\n                        482,\r\n                        614,\r\n                        482,\r\n                        582,\r\n                        514,\r\n                        614,\r\n                        482,\r\n                        560,\r\n                        538,\r\n                        614,\r\n                        484,\r\n                        558,\r\n                        538,\r\n                        614,\r\n                        484,\r\n                        1726,\r\n                        496,\r\n                        1680,\r\n                        542,\r\n                        614,\r\n                        482,\r\n                        562,\r\n                        536,\r\n                        616,\r\n                        482,\r\n                        558,\r\n                        538,\r\n                        614,\r\n                        482,\r\n                        560,\r\n                        540,\r\n                        614,\r\n                        484,\r\n                        614,\r\n                        482,\r\n                        560,\r\n                        536,\r\n                        558,\r\n                        542,\r\n                        1724,\r\n                        498,\r\n                        560,\r\n                        536,\r\n                        560,\r\n                        538,\r\n                        614,\r\n                        482,\r\n                        582,\r\n                        516,\r\n                        558,\r\n                        540,\r\n                        612,\r\n                        482,\r\n                        584,\r\n                        514,\r\n                        1678,\r\n                        542,\r\n                        1680,\r\n                        542,\r\n                        614,\r\n                        482,\r\n                        1738,\r\n                        482,\r\n                        1722,\r\n                        498,\r\n                        604,\r\n                        494,\r\n                        614,\r\n                        484,\r\n                        614,\r\n                        508\r\n                    ],\r\n                    \"t22\": [\r\n                        8918,\r\n                        4548,\r\n                        500,\r\n                        1724,\r\n                        496,\r\n                        1686,\r\n                        536,\r\n                        614,\r\n                        482,\r\n                        614,\r\n                        484,\r\n                        602,\r\n                        494,\r\n                        586,\r\n                        512,\r\n                        1678,\r\n                        544,\r\n                        1724,\r\n                        498,\r\n                        1686,\r\n                        536,\r\n                        1682,\r\n                        540,\r\n                        1722,\r\n                        498,\r\n                        1682,\r\n                        538,\r\n                        560,\r\n                        536,\r\n                        1686,\r\n                        536,\r\n                        1684,\r\n                        538,\r\n                        564,\r\n                        536,\r\n                        560,\r\n                        536,\r\n                        558,\r\n                        540,\r\n                        584,\r\n                        512,\r\n                        562,\r\n                        536,\r\n                        556,\r\n                        540,\r\n                        1680,\r\n                        542,\r\n                        1680,\r\n                        540,\r\n                        1680,\r\n                        540,\r\n                        616,\r\n                        482,\r\n                        586,\r\n                        512,\r\n                        562,\r\n                        534,\r\n                        614,\r\n                        482,\r\n                        556,\r\n                        542,\r\n                        558,\r\n                        540,\r\n                        556,\r\n                        542,\r\n                        612,\r\n                        484,\r\n                        612,\r\n                        484,\r\n                        558,\r\n                        538,\r\n                        614,\r\n                        484,\r\n                        556,\r\n                        542,\r\n                        582,\r\n                        512,\r\n                        1680,\r\n                        540,\r\n                        1684,\r\n                        540,\r\n                        602,\r\n                        494,\r\n                        558,\r\n                        540,\r\n                        616,\r\n                        484,\r\n                        554,\r\n                        540,\r\n                        600,\r\n                        498,\r\n                        556,\r\n                        540,\r\n                        556,\r\n                        540,\r\n                        558,\r\n                        540,\r\n                        558,\r\n                        540,\r\n                        558,\r\n                        538,\r\n                        584,\r\n                        514,\r\n                        570,\r\n                        530,\r\n                        556,\r\n                        544,\r\n                        552,\r\n                        538,\r\n                        582,\r\n                        514,\r\n                        612,\r\n                        482,\r\n                        1680,\r\n                        542,\r\n                        558,\r\n                        540,\r\n                        604,\r\n                        496,\r\n                        612,\r\n                        484,\r\n                        556,\r\n                        542,\r\n                        612,\r\n                        484,\r\n                        560,\r\n                        538,\r\n                        580,\r\n                        516,\r\n                        614,\r\n                        484,\r\n                        560,\r\n                        538,\r\n                        566,\r\n                        532,\r\n                        580,\r\n                        514,\r\n                        558,\r\n                        540,\r\n                        614,\r\n                        484,\r\n                        582,\r\n                        512,\r\n                        560,\r\n                        540,\r\n                        614,\r\n                        484,\r\n                        582,\r\n                        516,\r\n                        614,\r\n                        484,\r\n                        614,\r\n                        484,\r\n                        614,\r\n                        482,\r\n                        1682,\r\n                        538,\r\n                        1724,\r\n                        498,\r\n                        582,\r\n                        514,\r\n                        558,\r\n                        538,\r\n                        616,\r\n                        484,\r\n                        612,\r\n                        482,\r\n                        614,\r\n                        484,\r\n                        560,\r\n                        536,\r\n                        614,\r\n                        480,\r\n                        616,\r\n                        482,\r\n                        564,\r\n                        534,\r\n                        562,\r\n                        536,\r\n                        1682,\r\n                        538,\r\n                        614,\r\n                        484,\r\n                        584,\r\n                        514,\r\n                        602,\r\n                        494,\r\n                        556,\r\n                        542,\r\n                        614,\r\n                        482,\r\n                        584,\r\n                        514,\r\n                        614,\r\n                        482,\r\n                        1742,\r\n                        478,\r\n                        1684,\r\n                        538,\r\n                        584,\r\n                        512,\r\n                        586,\r\n                        512,\r\n                        560,\r\n                        536,\r\n                        1684,\r\n                        536,\r\n                        584,\r\n                        514,\r\n                        586,\r\n                        540\r\n                    ],\r\n                    \"t23\": [\r\n                        8924,\r\n                        4464,\r\n                        582,\r\n                        1686,\r\n                        534,\r\n                        1686,\r\n                        536,\r\n                        616,\r\n                        480,\r\n                        550,\r\n                        548,\r\n                        616,\r\n                        480,\r\n                        586,\r\n                        512,\r\n                        1686,\r\n                        534,\r\n                        1708,\r\n                        514,\r\n                        1686,\r\n                        534,\r\n                        1638,\r\n                        582,\r\n                        1728,\r\n                        494,\r\n                        586,\r\n                        510,\r\n                        1648,\r\n                        572,\r\n                        1684,\r\n                        538,\r\n                        1686,\r\n                        534,\r\n                        616,\r\n                        482,\r\n                        576,\r\n                        520,\r\n                        564,\r\n                        534,\r\n                        582,\r\n                        516,\r\n                        578,\r\n                        518,\r\n                        584,\r\n                        512,\r\n                        1728,\r\n                        492,\r\n                        1728,\r\n                        494,\r\n                        1688,\r\n                        534,\r\n                        586,\r\n                        514,\r\n                        616,\r\n                        480,\r\n                        588,\r\n                        512,\r\n                        546,\r\n                        550,\r\n                        584,\r\n                        512,\r\n                        616,\r\n                        480,\r\n                        616,\r\n                        480,\r\n                        560,\r\n                        536,\r\n                        550,\r\n                        546,\r\n                        588,\r\n                        510,\r\n                        588,\r\n                        512,\r\n                        540,\r\n                        554,\r\n                        618,\r\n                        482,\r\n                        1706,\r\n                        514,\r\n                        1646,\r\n                        574,\r\n                        588,\r\n                        508,\r\n                        588,\r\n                        510,\r\n                        584,\r\n                        514,\r\n                        586,\r\n                        532,\r\n                        740,\r\n                        344,\r\n                        580,\r\n                        512,\r\n                        584,\r\n                        512,\r\n                        560,\r\n                        536,\r\n                        586,\r\n                        512,\r\n                        592,\r\n                        512,\r\n                        618,\r\n                        472,\r\n                        566,\r\n                        534,\r\n                        584,\r\n                        512,\r\n                        584,\r\n                        510,\r\n                        618,\r\n                        482,\r\n                        616,\r\n                        482,\r\n                        1708,\r\n                        514,\r\n                        614,\r\n                        482,\r\n                        614,\r\n                        480,\r\n                        584,\r\n                        514,\r\n                        560,\r\n                        536,\r\n                        584,\r\n                        514,\r\n                        564,\r\n                        536,\r\n                        586,\r\n                        510,\r\n                        584,\r\n                        512,\r\n                        584,\r\n                        512,\r\n                        548,\r\n                        548,\r\n                        564,\r\n                        536,\r\n                        582,\r\n                        514,\r\n                        586,\r\n                        512,\r\n                        588,\r\n                        510,\r\n                        564,\r\n                        532,\r\n                        586,\r\n                        510,\r\n                        616,\r\n                        480,\r\n                        586,\r\n                        512,\r\n                        550,\r\n                        548,\r\n                        584,\r\n                        510,\r\n                        1706,\r\n                        516,\r\n                        1686,\r\n                        538,\r\n                        584,\r\n                        510,\r\n                        584,\r\n                        514,\r\n                        588,\r\n                        508,\r\n                        564,\r\n                        534,\r\n                        548,\r\n                        552,\r\n                        586,\r\n                        512,\r\n                        544,\r\n                        550,\r\n                        560,\r\n                        538,\r\n                        564,\r\n                        534,\r\n                        550,\r\n                        546,\r\n                        616,\r\n                        482,\r\n                        584,\r\n                        510,\r\n                        588,\r\n                        512,\r\n                        584,\r\n                        512,\r\n                        564,\r\n                        536,\r\n                        586,\r\n                        512,\r\n                        582,\r\n                        514,\r\n                        548,\r\n                        548,\r\n                        560,\r\n                        536,\r\n                        1708,\r\n                        512,\r\n                        590,\r\n                        508,\r\n                        1710,\r\n                        514,\r\n                        616,\r\n                        480,\r\n                        1686,\r\n                        536,\r\n                        562,\r\n                        534,\r\n                        588,\r\n                        538\r\n                    ]\r\n                }\r\n            }\r\n        },\r\n        \"off\": [\r\n            8984,\r\n            4464,\r\n            578,\r\n            1710,\r\n            510,\r\n            1644,\r\n            576,\r\n            588,\r\n            510,\r\n            584,\r\n            514,\r\n            564,\r\n            530,\r\n            526,\r\n            572,\r\n            1686,\r\n            538,\r\n            1686,\r\n            534,\r\n            1688,\r\n            534,\r\n            1686,\r\n            536,\r\n            1688,\r\n            532,\r\n            592,\r\n            508,\r\n            548,\r\n            550,\r\n            1710,\r\n            510,\r\n            1646,\r\n            576,\r\n            586,\r\n            512,\r\n            606,\r\n            488,\r\n            520,\r\n            578,\r\n            528,\r\n            542,\r\n            614,\r\n            510,\r\n            564,\r\n            506,\r\n            1680,\r\n            572,\r\n            1640,\r\n            578,\r\n            1716,\r\n            510,\r\n            532,\r\n            534,\r\n            612,\r\n            510,\r\n            566,\r\n            534,\r\n            586,\r\n            508,\r\n            590,\r\n            482,\r\n            580,\r\n            544,\r\n            566,\r\n            506,\r\n            614,\r\n            510,\r\n            588,\r\n            510,\r\n            564,\r\n            506,\r\n            592,\r\n            506,\r\n            610,\r\n            514,\r\n            540,\r\n            556,\r\n            1640,\r\n            552,\r\n            1714,\r\n            532,\r\n            588,\r\n            508,\r\n            532,\r\n            568,\r\n            586,\r\n            510,\r\n            588,\r\n            510,\r\n            588,\r\n            510,\r\n            530,\r\n            568,\r\n            526,\r\n            568,\r\n            588,\r\n            512,\r\n            556,\r\n            538,\r\n            590,\r\n            510,\r\n            618,\r\n            452,\r\n            576,\r\n            548,\r\n            528,\r\n            568,\r\n            590,\r\n            508,\r\n            566,\r\n            504,\r\n            1758,\r\n            486,\r\n            1656,\r\n            542,\r\n            570,\r\n            556,\r\n            564,\r\n            530,\r\n            570,\r\n            528,\r\n            588,\r\n            508,\r\n            548,\r\n            550,\r\n            526,\r\n            570,\r\n            528,\r\n            570,\r\n            588,\r\n            508,\r\n            550,\r\n            546,\r\n            590,\r\n            508,\r\n            586,\r\n            510,\r\n            520,\r\n            578,\r\n            528,\r\n            570,\r\n            588,\r\n            506,\r\n            522,\r\n            578,\r\n            590,\r\n            508,\r\n            588,\r\n            510,\r\n            586,\r\n            510,\r\n            584,\r\n            514,\r\n            606,\r\n            464,\r\n            634,\r\n            464,\r\n            552,\r\n            568,\r\n            586,\r\n            512,\r\n            518,\r\n            578,\r\n            590,\r\n            508,\r\n            528,\r\n            568,\r\n            590,\r\n            508,\r\n            590,\r\n            506,\r\n            530,\r\n            540,\r\n            616,\r\n            508,\r\n            588,\r\n            508,\r\n            590,\r\n            482,\r\n            1714,\r\n            508,\r\n            592,\r\n            506,\r\n            1670,\r\n            576,\r\n            590,\r\n            508,\r\n            562,\r\n            534,\r\n            590,\r\n            508,\r\n            566,\r\n            504,\r\n            614,\r\n            508,\r\n            1652,\r\n            570,\r\n            1686,\r\n            536,\r\n            1644,\r\n            550,\r\n            1738,\r\n            510,\r\n            586,\r\n            512,\r\n            1662,\r\n            546,\r\n            602,\r\n            508,\r\n            588,\r\n            538\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/cloner/save",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cloner",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Remotes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/cloner/list",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cloner",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Remote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/cloner/details/66190787fe07564124de68ff",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cloner",
+								"details",
+								"66190787fe07564124de68ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/status/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"status",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"protocol\": 24,\r\n    \"model\": 3,\r\n    \"power\": true,\r\n    \"mode\": 3,\r\n    \"degrees\": 30,\r\n    \"celsius\": true,\r\n    \"fanspeed\": 0,\r\n    \"swingv\": -1,\r\n    \"swingh\": -1,\r\n    \"quiet\": false,\r\n    \"turbo\": false,\r\n    \"econo\": false,\r\n    \"light\": true,\r\n    \"filter\": false,\r\n    \"clean\": false,\r\n    \"beep\": true,\r\n    \"sleep\": -1,\r\n    \"clock\": -1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/status/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"status",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Environment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"humidity\": 43,\r\n    \"temp\": 26\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/env/643662f09f2b0b09309e17b5",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"env",
+								"643662f09f2b0b09309e17b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get env History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/device/history/env/:id/:date",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device",
+								"history",
+								"env",
+								":id",
+								":date"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "645674867a1c000037001ed2"
+								},
+								{
+									"key": "date",
+									"value": "07-05-2023"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{ACCESS_TAKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/profile",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"IT Dev\",\r\n    \"phone\": \"989998989\",\r\n    \"city\": \"\",\r\n    \"state\": \"\",\r\n    \"postalCode\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/profile/update",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"newPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/profile/change-password",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"profile",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filters\":{\r\n        \"role\":\"User\"\r\n    },\r\n    \"keywords\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/all-users",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"all-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/details/6454d3a3d841000033004fc2",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"details",
+								"6454d3a3d841000033004fc2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Admins",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filters\":{\r\n        \"role\":\"Admin\"\r\n    },\r\n    \"keywords\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/all-users",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"all-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My Name\",\r\n    \"email\": \"email@annexbyte.in\",\r\n    \"password\": \"123456789\",\r\n    \"phone\": \"989998989\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/admin/add",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"admin",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"679b48f1f8912410a0f0c447\",\r\n    \"name\": \"My Name\",\r\n    \"email\": \"email@annexbyte.in\",\r\n    \"password\": \"123456789\",\r\n    \"phone\": \"989998989\",\r\n    \"city\": \"\",\r\n    \"state\": \"\",\r\n    \"postalCode\": \"\",\r\n    \"blocked\": \"No\" //'No','Admin_Block','User_Block','All_Block'\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/v1/user/update",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{ACCESS_TAKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

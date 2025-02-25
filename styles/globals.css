@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: "Manrope", serif;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  html {
+    overflow: auto;
+  }
+}
