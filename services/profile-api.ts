@@ -1,9 +1,22 @@
 import axiosClient from "@/utils/axios-client";
 
-async function getProfile() {
+type ProfileData = {
+  otp: null;
+  role: string;
+  blocked: string;
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  state: string;
+  postalCode: string;
+};
+
+async function getProfile(): Promise<ProfileData> {
   try {
     const res = await axiosClient.get("/user/profile");
-    return res.data;
+    return res.data.data;
   } catch (error) {
     console.log(error);
     throw error;

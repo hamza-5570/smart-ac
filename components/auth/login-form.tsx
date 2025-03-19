@@ -24,7 +24,7 @@ export default function LoginForm() {
       onSuccess: (res) => {
         localStorage.setItem("access_token", res.data.token);
         form.reset();
-        () => router.replace("/");
+        router.replace("/");
       },
       onError: () => {},
     });
@@ -54,7 +54,7 @@ export default function LoginForm() {
         type="password"
       />
 
-      <Button fullWidth isLoading={isPending} color="primary" type="submit">
+      <Button fullWidth isLoading={isPending} color="secondary" type="submit">
         Login
       </Button>
 

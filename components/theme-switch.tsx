@@ -74,16 +74,16 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        <div className="flex items-center h-8 md:h-10 w-[70px] md:w-[80px] rounded-lg bg-[#FCFCFD] p-1 justify-between dark:bg-[#161221]">
+        <div className="flex items-center h-8 md:h-10 w-[70px] md:w-[80px] rounded-lg bg-gray-200 px-0.5 justify-between dark:bg-[#161221]">
           <div
-            className={`${theme === "light" ? "bg-white dark:bg-[#0A0613]" : ""} rounded-xl p-1.5 md:p-2`}
+            className={`${theme === "light" ? "bg-white dark:bg-[#0A0613]" : ""} rounded-md p-1.5 md:p-2`}
           >
             <HiSun
               className={`${theme === "light" ? "text-[#4F46E5]" : "text-[#98A2B3]"} w-4 h-4 md:w-5 md:h-5`}
             />
           </div>
           <div
-            className={`${theme === "dark" ? "bg-white dark:bg-[#0A0613]" : ""} rounded-xl p-1.5 md:p-2`}
+            className={`${theme === "dark" ? "bg-white dark:bg-[#0A0613]" : ""} rounded-md p-1.5 md:p-2`}
           >
             <TbMoon
               className={`${theme === "dark" ? "text-[#4F46E5]" : "text-[#98A2B3]"} w-4 h-4 md:w-5 md:h-5`}

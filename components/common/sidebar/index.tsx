@@ -1,42 +1,48 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { Logo } from "../logo";
-import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import {
+  LuAirVent,
+  LuFileChartColumn,
+  LuHeadset,
+  LuLayoutDashboard,
+  LuLibraryBig,
+  LuUserRoundCog,
+} from "react-icons/lu";
+import { Logo } from "../logo";
 
 const list = [
   {
-    icon: "/assets/svg/sidebar/dashboard.svg",
+    icon: LuLayoutDashboard,
     name: "Dashboard",
     path: "/",
   },
+  // {
+  //   icon: "/assets/png/sidebar/users-globe.png",
+  //   name: "Customers",
+  //   path: "/customers",
+  // },
   {
-    icon: "/assets/png/sidebar/users-globe.png",
-    name: "Customers",
-    path: "/customers",
-  },
-  {
-    icon: "/assets/png/sidebar/device-settings.png",
+    icon: LuAirVent,
     name: "Devices",
     path: "/devices",
   },
   {
-    icon: "/assets/png/sidebar/library.png",
+    icon: LuLibraryBig,
     name: "Library",
     path: "/library",
   },
   {
-    icon: "/assets/png/sidebar/analytics-report.png",
+    icon: LuFileChartColumn,
     name: "Analytics & Reports",
     path: "/analytics-and-reports",
   },
   {
-    icon: "/assets/png/sidebar/user-settings.png",
+    icon: LuUserRoundCog,
     name: "Users",
     path: "/users",
   },
   {
-    icon: "/assets/png/sidebar/support.png",
+    icon: LuHeadset,
     name: "Support",
     path: "/support",
   },
@@ -59,17 +65,8 @@ export function SideBar() {
                 : "text-[#98A2B3] dark:text-[#8F8A99]"
             }`}
           >
-            <Image
-              src={item.icon}
-              alt={item.name}
-              width={20}
-              height={20}
-              className="w-5 h-5"
-              style={{
-                filter: `${router.pathname === item.path ? "invert(110%) sepia(77%) saturate(700%) hue-rotate(210deg) brightness(88%)" : ""}`,
-              }}
-            />
-            {item.name}
+            <item.icon className="size-4" />
+            <span>{item.name}</span>
           </Link>
         ))}
       </ul>

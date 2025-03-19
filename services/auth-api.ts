@@ -56,10 +56,9 @@ async function forgotPassword(data: ForgotPasswordPayload) {
   }
 }
 
-type VerifyEmailPayload = { token: string };
-async function verifyEmail(data: VerifyEmailPayload) {
+async function verifyEmail(token: string) {
   try {
-    const res = await axiosClient.get("/auth/verify-email/" + data.token);
+    const res = await axiosClient.get("/auth/verify-email/" + token);
     return res.data;
   } catch (error) {
     console.log(error);

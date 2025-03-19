@@ -19,7 +19,7 @@ export default function HealthSummary() {
 
 function SummaryItem() {
   return (
-    <div className="p-3 pl-6 bg-gray-100 rounded-md flex items-center justify-between">
+    <div className="p-3 pl-6 bg-gray-100 dark:bg-[#161221] rounded-md flex items-center justify-between">
       <h5 className="font-semibold">Notifications</h5>
       <span className="text-sm">12:30 PM</span>
     </div>

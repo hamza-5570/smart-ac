@@ -34,7 +34,7 @@ export default function SignupForm() {
   return (
     <>
       {data && (
-        <div className="px-4 py-2 rounded-2xl bg-sky-900/50 text-center">
+        <div className="px-4 py-2 rounded-2xl bg-purple-100 text-center">
           <p className="text-sm">{data.message}:</p>
           <p className="font-medium ">{data.data.email}</p>
         </div>
@@ -71,7 +71,7 @@ export default function SignupForm() {
           type="password"
         />
 
-        <Button fullWidth isLoading={isPending} color="primary" type="submit">
+        <Button fullWidth isLoading={isPending} color="secondary" type="submit">
           Signup
         </Button>
         <p className="text-gray-500 text-center">

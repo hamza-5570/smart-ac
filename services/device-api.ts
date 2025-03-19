@@ -1,11 +1,15 @@
 import axiosClient from "@/utils/axios-client";
 
-type DevicePayload = {
+export type DevicePayload = {
   type: string;
   codeName: string;
   deviceName: string;
   provider: string;
-  deviceInfo: { remoteId: number; nickname: string; deviceSerial: string };
+  deviceInfo: {
+    remoteId: number | string;
+  };
+  nickname: string;
+  deviceSerial: string;
 };
 async function registerDevice(payload: DevicePayload) {
   try {
@@ -116,33 +120,6 @@ async function linkCustomRemote(payload: LinkRemotePayload) {
   }
 }
 
-type DeviceEnvironmentPayload = {
-  humidity?: number;
-  temp?: number;
-};
-async function updateDeviceEnvironment(
-  id: string,
-  payload: DeviceEnvironmentPayload
-) {
-  try {
-    const res = await axiosClient.post("/device/env" + id, payload);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-async function getDeviceEnvironmentHistory(id: string, date: string) {
-  try {
-    const res = await axiosClient.get(`/device/history/${id}/${date}`);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
 export {
   registerDevice,
   getMyDevices,
@@ -152,6 +129,4 @@ export {
   updateDeviceRemote,
   postStatus,
   linkCustomRemote,
-  updateDeviceEnvironment,
-  getDeviceEnvironmentHistory,
 };

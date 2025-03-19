@@ -1,20 +1,27 @@
 import { ThemeSwitch } from "@/components/theme-switch";
-import Image from "next/image";
 import {
   Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
   DropdownItem,
+  DropdownMenu,
+  DropdownSection,
+  DropdownTrigger,
 } from "@heroui/dropdown";
-import { IoIosArrowDown } from "react-icons/io";
+import Image from "next/image";
+
 import { Button } from "@heroui/button";
-import { Logo } from "../logo";
-import { Drawers } from "../drawer";
+import { User } from "@heroui/user";
 import { useRouter } from "next/router";
 import { Key } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { Drawers } from "../drawer";
+import { Logo } from "../logo";
+import { useProfile } from "@/context/user-context";
+import Link from "next/link";
+import { LuUserRoundCog } from "react-icons/lu";
 
 export const Navbar = () => {
   const router = useRouter();
+  const { data: user } = useProfile();
 
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -22,7 +29,9 @@ export const Navbar = () => {
   };
   const handleDropdownAction = (key: Key) => {
     if (key === "logout") handleLogout();
+    if (key === "profile") router.push("/profile");
   };
+
   return (
     <div className="flex items-center justify-between lg:justify-end h-[65px] md:h-[80px] border-b border-[#EAECF0] bg-white dark:bg-[#0A0613] dark:border-[#2D263D] px-3 md:px-5">
       <div className="block lg:hidden">
@@ -40,27 +49,17 @@ export const Navbar = () => {
             className="w-4 h-4 md:w-6 md:h-6"
           />
         </div>
-        <div className="hidden w-8 h-8 md:w-10 md:h-10 md:flex items-center justify-center bg-[#F9FAFB] dark:bg-[#161221] rounded-full cursor-pointer">
-          <Image
-            src={"/assets/svg/navbar/user.svg"}
-            alt=""
-            width={24}
-            height={24}
-          />
-        </div>
+
         <Drawers />
         <Dropdown className="font-manrope">
           <DropdownTrigger>
             <Button
               isIconOnly
-              variant="light"
-              size="sm"
-              className="hidden md:flex items-center justify-center"
+              disableAnimation
+              variant="flat"
+              className=" rounded-full  bg-[#F9FAFB] dark:bg-[#161221]"
             >
-              <IoIosArrowDown
-                className="cursor-pointer text-[#667085] dark:text-[#8F8A99]"
-                size={24}
-              />
+              <LuUserRoundCog size={24} className="text-gray-500" />
             </Button>
           </DropdownTrigger>
           <DropdownMenu
@@ -68,8 +67,33 @@ export const Navbar = () => {
             variant="faded"
             onAction={handleDropdownAction}
           >
-            <DropdownItem key="new">Profile</DropdownItem>
-            <DropdownItem key="copy">Settings</DropdownItem>
+            <DropdownSection showDivider title={"Profile"}>
+              <DropdownItem
+                key="username"
+                isReadOnly
+                variant="flat"
+                className="pointer-events-none"
+              >
+                <User
+                  avatarProps={{
+                    name: `${user?.name
+                      .split(" ")
+                      .map((word: string) => word.charAt(0))
+                      .join("")}`,
+                    size: "sm",
+                    classNames: { name: "font-semibold" },
+                  }}
+                  classNames={{ name: "font-semibold" }}
+                  name={user?.name}
+                  description={user?.role}
+                />
+              </DropdownItem>
+            </DropdownSection>
+
+            <DropdownItem key="profile" as={Link} href="/profile">
+              Settings
+            </DropdownItem>
+
             <DropdownItem key="logout">Logout</DropdownItem>
           </DropdownMenu>
         </Dropdown>

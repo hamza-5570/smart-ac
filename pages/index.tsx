@@ -1,9 +1,5 @@
 import Dashboard from "@/components/dashboard";
 
-export default function IndexPage() {
-  return (
-    <section>
-      <Dashboard />
-    </section>
-  );
+export default function DashboardPage() {
+  return <Dashboard />;
 }

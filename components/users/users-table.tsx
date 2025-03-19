@@ -1,4 +1,5 @@
-import { getMyDevices } from "@/services/device-api";
+import { getUsers } from "@/services/user-api";
+import { calcResultNo } from "@/utils/helpers";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
 import { Spinner } from "@heroui/spinner";
@@ -11,17 +12,17 @@ import {
   TableRow,
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
-import { LuEye } from "react-icons/lu";
+import dayjs from "dayjs";
 
-export default function DevicesTable() {
+export default function UsersTable() {
   const {
-    data: devicesData,
+    data: usersData,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ["devices-list"],
-    queryFn: () => getMyDevices(),
+    queryKey: ["users-list"],
+    queryFn: () => getUsers({ filters: { role: "User" }, keywords: "" }),
   });
 
   if (isLoading)
@@ -36,17 +37,15 @@ export default function DevicesTable() {
         <p className="text-center text-gray-600">{error.message}</p>
       </div>
     );
-  const { devices, message } = devicesData;
-  const { sharedDevices, myDevices } = devices;
 
-  const allDevices = [...sharedDevices, ...myDevices];
-
-  if (!allDevices.length)
+  const { users, currentPage, total, totalPages } = usersData.data;
+  const pagination = { currentPage, totalPages, limit: 10 };
+  if (total === 0)
     return (
       <div className="h-80 flex items-center justify-center">
         <div className="space-y-2 text-center">
           <p className="text-center text-gray-600 text-xl font-medium">
-            {message}
+            {usersData.message}
           </p>
           <Button size="lg" color="secondary" variant="shadow">
             Register a Device
@@ -59,30 +58,28 @@ export default function DevicesTable() {
     <div className="mt-6">
       <Table aria-label="Devices Table">
         <TableHeader>
-          <TableColumn>Device Name</TableColumn>
-          <TableColumn>Nickname</TableColumn>
-          <TableColumn>Code Name</TableColumn>
-          <TableColumn>Provider</TableColumn>
-          <TableColumn>Serial No.</TableColumn>
+          <TableColumn>#</TableColumn>
+          <TableColumn>Account ID</TableColumn>
+          <TableColumn>Name</TableColumn>
+          <TableColumn>Email</TableColumn>
+          <TableColumn>Security Key</TableColumn>
+          <TableColumn>Created On</TableColumn>
           <TableColumn>Action</TableColumn>
         </TableHeader>
         <TableBody>
-          {allDevices.map((device) => (
-            <TableRow key={`device-${device._id}`}>
-              <TableCell>{device.deviceName}</TableCell>
-              <TableCell>{device.nickname}</TableCell>
+          {users.map((user: any, index: number) => (
+            <TableRow key={`user-${user._id}`}>
+              <TableCell>{calcResultNo(pagination, index)}</TableCell>
+              <TableCell>{user._id}</TableCell>
+              <TableCell>{user.name}</TableCell>
               <TableCell>
-                <Code>{device.codeName}</Code>
+                <Code>{user.email}</Code>
               </TableCell>
-              <TableCell>{device.provider}</TableCell>
-              <TableCell>{device.deviceSerial}</TableCell>
+              <TableCell>{user.securityKey}</TableCell>
               <TableCell>
-                <div className="space-x-2">
-                  <Button isIconOnly variant="flat" size="sm" color="primary">
-                    <LuEye />
-                  </Button>
-                </div>
+                {dayjs(user.createdAt).format("DD-MM-YYYY")}
               </TableCell>
+              <TableCell>----------</TableCell>
             </TableRow>
           ))}
         </TableBody>
