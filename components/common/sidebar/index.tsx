@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import {
   LuAirVent,
   LuFileChartColumn,
+  LuFileUp,
   LuHeadset,
   LuLayoutDashboard,
   LuLibraryBig,
   LuShield,
-  LuTractor,
   LuUserRoundCog,
 } from "react-icons/lu";
 import { Logo } from "../logo";
@@ -29,9 +29,9 @@ const list = [
     path: "/library",
   },
   {
-    icon: LuTractor,
-    name: "Farmer",
-    path: "/farmer",
+    icon: LuFileUp,
+    name: "Performer",
+    path: "/performer",
   },
   {
     icon: LuFileChartColumn,
