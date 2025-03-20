@@ -17,7 +17,7 @@ import dayjs from "dayjs";
 export default function UsersTable({
   role = "User",
 }: {
-  role: "User" | "Admin";
+  role?: "User" | "Admin";
 }) {
   const {
     data: usersData,
