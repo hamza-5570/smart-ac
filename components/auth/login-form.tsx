@@ -41,11 +41,13 @@ export default function LoginForm() {
         label="Email"
         labelPlacement="outside"
         name="email"
+        defaultValue="it@mettlesoft.com.au"
         placeholder="Enter your email"
         type="email"
       />
       <Input
         isRequired
+        defaultValue="123456789"
         errorMessage="Please enter your password"
         label="Password"
         labelPlacement="outside"
