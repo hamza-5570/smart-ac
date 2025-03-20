@@ -25,7 +25,7 @@ export default function UsersTable({
     isError,
     error,
   } = useQuery({
-    queryKey: ["users-list"],
+    queryKey: ["users-list", role],
     queryFn: () => getUsers({ filters: { role: role }, keywords: "" }),
   });
 
