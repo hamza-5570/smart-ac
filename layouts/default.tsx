@@ -7,12 +7,13 @@ import { useRouter } from "next/router";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { isLoading, isError, error } = useProfile();
+
   useEffect(() => {
     const access = localStorage.getItem("access_token");
     if (!access) {
       router.replace("/auth/login");
     }
-  }, []);
+  }, [router.pathname]);
 
   if (isLoading)
     return (

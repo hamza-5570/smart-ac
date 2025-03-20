@@ -6,18 +6,16 @@ import {
   DropdownSection,
   DropdownTrigger,
 } from "@heroui/dropdown";
-import Image from "next/image";
 
+import { useProfile } from "@/context/user-context";
 import { Button } from "@heroui/button";
 import { User } from "@heroui/user";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { Key } from "react";
-import { IoIosArrowDown } from "react-icons/io";
+import { LuUserRoundCog } from "react-icons/lu";
 import { Drawers } from "../drawer";
 import { Logo } from "../logo";
-import { useProfile } from "@/context/user-context";
-import Link from "next/link";
-import { LuUserRoundCog } from "react-icons/lu";
 
 export const Navbar = () => {
   const router = useRouter();
@@ -39,16 +37,6 @@ export const Navbar = () => {
       </div>
       <div className="flex items-center gap-2 md:gap-4">
         <ThemeSwitch />
-
-        <div className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-[#F9FAFB] dark:bg-[#161221] rounded-full cursor-pointer">
-          <Image
-            src={"/assets/svg/navbar/noti-icon.svg"}
-            alt=""
-            width={24}
-            height={24}
-            className="w-4 h-4 md:w-6 md:h-6"
-          />
-        </div>
 
         <Drawers />
         <Dropdown className="font-manrope">

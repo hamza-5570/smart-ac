@@ -6,6 +6,8 @@ import {
   LuHeadset,
   LuLayoutDashboard,
   LuLibraryBig,
+  LuShield,
+  LuTractor,
   LuUserRoundCog,
 } from "react-icons/lu";
 import { Logo } from "../logo";
@@ -16,11 +18,6 @@ const list = [
     name: "Dashboard",
     path: "/",
   },
-  // {
-  //   icon: "/assets/png/sidebar/users-globe.png",
-  //   name: "Customers",
-  //   path: "/customers",
-  // },
   {
     icon: LuAirVent,
     name: "Devices",
@@ -32,6 +29,11 @@ const list = [
     path: "/library",
   },
   {
+    icon: LuTractor,
+    name: "Farmer",
+    path: "/farmer",
+  },
+  {
     icon: LuFileChartColumn,
     name: "Analytics & Reports",
     path: "/analytics-and-reports",
@@ -40,6 +42,11 @@ const list = [
     icon: LuUserRoundCog,
     name: "Users",
     path: "/users",
+  },
+  {
+    icon: LuShield,
+    name: "Admins",
+    path: "/admins",
   },
   {
     icon: LuHeadset,

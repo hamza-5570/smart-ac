@@ -1,7 +1,4 @@
-import React from "react";
 import DashboardCard from "./dashboard-card";
-import CustomerInsightsChart from "./customer-insights-chart";
-import HealthSummary from "./health-summary";
 
 const list = [
   {
@@ -29,32 +26,6 @@ const list = [
     href: "/certificates?filter=Expired",
   },
 ];
-const healthSummary = [
-  {
-    icon: "/assets/png/security-shield.png",
-    title: "Total Warranty",
-    value: "60",
-    href: "/certificates?filter=PendingValidation",
-  },
-  {
-    icon: "/assets/png/hourglass.png",
-    title: "Total Expiration",
-    value: "30",
-    href: "/certificates?filter=ExpiringSoon",
-  },
-  {
-    icon: "/assets/png/link.png",
-    title: "Paired Devices",
-    value: "03",
-    href: "/certificates?filter=Expired",
-  },
-  {
-    icon: "/assets/png/not-allowed.png",
-    title: "Unpaired Devices",
-    value: "10",
-    href: "/certificates?filter=Issued",
-  },
-];
 
 export default function Dashboard() {
   return (
@@ -69,20 +40,6 @@ export default function Dashboard() {
         {list.map((item, index) => (
           <DashboardCard key={index} item={item} />
         ))}
-      </div>
-      <section className="md:py-6 py-4 flex gap-4 md:gap-6">
-        <CustomerInsightsChart />
-        <HealthSummary />
-      </section>
-      <div>
-        <h2 className="text-xl text-[#101828] dark:text-white font-semibold font-manrope">
-          Device Health Summary
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-          {healthSummary.map((item, index) => (
-            <DashboardCard key={index} item={item} />
-          ))}
-        </div>
       </div>
     </div>
   );

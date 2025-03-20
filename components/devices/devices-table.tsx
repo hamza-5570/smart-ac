@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
-import { LuEye } from "react-icons/lu";
+import dayjs from "dayjs";
 
 export default function DevicesTable() {
   const {
@@ -64,7 +64,7 @@ export default function DevicesTable() {
           <TableColumn>Code Name</TableColumn>
           <TableColumn>Provider</TableColumn>
           <TableColumn>Serial No.</TableColumn>
-          <TableColumn>Action</TableColumn>
+          <TableColumn>Last Updated</TableColumn>
         </TableHeader>
         <TableBody>
           {allDevices.map((device) => (
@@ -77,11 +77,9 @@ export default function DevicesTable() {
               <TableCell>{device.provider}</TableCell>
               <TableCell>{device.deviceSerial}</TableCell>
               <TableCell>
-                <div className="space-x-2">
-                  <Button isIconOnly variant="flat" size="sm" color="primary">
-                    <LuEye />
-                  </Button>
-                </div>
+                {device.lastEnvUpdated
+                  ? dayjs(device.lastEnvUpdated).format("DD-MM-YYYY hh:mm A")
+                  : "-----"}
               </TableCell>
             </TableRow>
           ))}

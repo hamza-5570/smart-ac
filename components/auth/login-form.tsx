@@ -58,7 +58,7 @@ export default function LoginForm() {
         Login
       </Button>
 
-      <p className="text-gray-500 text-center">
+      {/* <p className="text-gray-500 text-center">
         {"Don't have an account? "}
         <Link
           href="/auth/signup"
@@ -66,7 +66,7 @@ export default function LoginForm() {
         >
           Signup
         </Link>
-      </p>
+      </p> */}
     </Form>
   );
 }

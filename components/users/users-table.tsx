@@ -14,7 +14,11 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
 
-export default function UsersTable() {
+export default function UsersTable({
+  role = "User",
+}: {
+  role: "User" | "Admin";
+}) {
   const {
     data: usersData,
     isLoading,
@@ -22,7 +26,7 @@ export default function UsersTable() {
     error,
   } = useQuery({
     queryKey: ["users-list"],
-    queryFn: () => getUsers({ filters: { role: "User" }, keywords: "" }),
+    queryFn: () => getUsers({ filters: { role: role }, keywords: "" }),
   });
 
   if (isLoading)
@@ -62,9 +66,8 @@ export default function UsersTable() {
           <TableColumn>Account ID</TableColumn>
           <TableColumn>Name</TableColumn>
           <TableColumn>Email</TableColumn>
-          <TableColumn>Security Key</TableColumn>
+
           <TableColumn>Created On</TableColumn>
-          <TableColumn>Action</TableColumn>
         </TableHeader>
         <TableBody>
           {users.map((user: any, index: number) => (
@@ -75,11 +78,10 @@ export default function UsersTable() {
               <TableCell>
                 <Code>{user.email}</Code>
               </TableCell>
-              <TableCell>{user.securityKey}</TableCell>
+
               <TableCell>
                 {dayjs(user.createdAt).format("DD-MM-YYYY")}
               </TableCell>
-              <TableCell>----------</TableCell>
             </TableRow>
           ))}
         </TableBody>
