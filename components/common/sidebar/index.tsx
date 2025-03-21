@@ -10,6 +10,8 @@ import {
   LuShield,
   LuUserRoundCog,
 } from "react-icons/lu";
+import { GrShieldSecurity } from "react-icons/gr";
+
 import { Logo } from "../logo";
 
 const list = [
@@ -34,10 +36,16 @@ const list = [
     path: "/performer",
   },
   {
+    icon: GrShieldSecurity,
+    name: "Firmware",
+    path: "/firmware",
+  },
+  {
     icon: LuFileChartColumn,
     name: "Analytics & Reports",
     path: "/analytics-and-reports",
   },
+  
   {
     icon: LuUserRoundCog,
     name: "Users",
