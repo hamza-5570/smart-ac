@@ -49,10 +49,8 @@ export default function UpdateWarrenty({device}:any) {
             <LuPencilLine size={20} />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="h-36 w-96">
-          <h5 className="text-gray-500 font-medium text-sm text-left mb-4">
-            Please Enter Start and End Date
-          </h5>
+        <PopoverContent className="h-24 w-96">
+          
           <div className="grid grid-cols-12 gap-3">
             <div className="col-span-8">
               <DeviceWarrentyForm

@@ -30,11 +30,11 @@ const list = [
     name: "Library",
     path: "/library",
   },
-  {
-    icon: LuFileUp,
-    name: "Performer",
-    path: "/performer",
-  },
+  // {
+  //   icon: LuFileUp,
+  //   name: "Performer",
+  //   path: "/performer",
+  // },
   {
     icon: GrShieldSecurity,
     name: "Firmware",

@@ -36,7 +36,7 @@ export default function DeviceWarrentyForm({
           aria-label="Date (Controlled)"
           endName="endDate"
           className="w-full"
-          label="Stay duration"
+          label="Enter Start and End Date"
         />
       </div>
     </Form>

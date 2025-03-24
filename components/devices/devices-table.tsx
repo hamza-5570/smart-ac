@@ -1,7 +1,6 @@
-import { getAllDevices, getMyDevices } from "@/services/device-api";
+import { getAllDevices,} from "@/services/device-api";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/modal";
 import { Spinner } from "@heroui/spinner";
 import {
   Table,
@@ -13,9 +12,6 @@ import {
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
-import { useState } from "react";
-import { LuPencilLine } from "react-icons/lu";
-import DeviceWarrentyForm from "./device-update-warrenty-form";
 import UpdateWarrenty from "./update-warrenty";
 
 export default function DevicesTable() {
