@@ -29,6 +29,18 @@ async function getMyDevices() {
     throw error;
   }
 }
+
+async function getAllDevices() {
+  try {
+    const res = await axiosClient.get("/device/devices");
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+
 async function getDeviceDetails(id: string) {
   try {
     const res = await axiosClient.get("/device/details/" + id);
@@ -43,6 +55,19 @@ async function getDeviceStatus(id: string) {
     const res = await axiosClient.get("/device/status/" + id);
     return res.data;
   } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+async function updateWarrenty(data:any) {
+  const { id, payload}=data
+  try {
+    const res = await axiosClient.post(
+      "/device/update-warranty-info/" + id,
+      payload
+    );
+    return res.data;
+  }  catch (error) {
     console.log(error);
     throw error;
   }
@@ -129,4 +154,6 @@ export {
   updateDeviceRemote,
   postStatus,
   linkCustomRemote,
+  getAllDevices,
+  updateWarrenty
 };

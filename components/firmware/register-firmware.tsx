@@ -61,7 +61,7 @@ export default function RegisterFirmware() {
             <FirmWareForm setFile={setFile} onSubmit={handleSubmit} />
           </ModalBody>
           <ModalFooter>
-            <Button type="button" variant="ghost">
+            <Button onPress={()=>{setIsOpen(false)}} type="button" variant="ghost">
               Cancel
             </Button>
             <Button

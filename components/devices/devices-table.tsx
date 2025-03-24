@@ -1,6 +1,7 @@
-import { getMyDevices } from "@/services/device-api";
+import { getAllDevices, getMyDevices } from "@/services/device-api";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/modal";
 import { Spinner } from "@heroui/spinner";
 import {
   Table,
@@ -12,6 +13,10 @@ import {
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
+import { useState } from "react";
+import { LuPencilLine } from "react-icons/lu";
+import DeviceWarrentyForm from "./device-update-warrenty-form";
+import UpdateWarrenty from "./update-warrenty";
 
 export default function DevicesTable() {
   const {
@@ -21,7 +26,7 @@ export default function DevicesTable() {
     error,
   } = useQuery({
     queryKey: ["devices-list"],
-    queryFn: () => getMyDevices(),
+    queryFn: () => getAllDevices(),
   });
 
   if (isLoading)
@@ -37,11 +42,8 @@ export default function DevicesTable() {
       </div>
     );
   const { devices, message } = devicesData;
-  const { sharedDevices, myDevices } = devices;
 
-  const allDevices = [...sharedDevices, ...myDevices];
-
-  if (!allDevices.length)
+  if (!devices.length)
     return (
       <div className="h-80 flex items-center justify-center">
         <div className="space-y-2 text-center">
@@ -65,9 +67,10 @@ export default function DevicesTable() {
           <TableColumn>Provider</TableColumn>
           <TableColumn>Serial No.</TableColumn>
           <TableColumn>Last Updated</TableColumn>
+          <TableColumn>Updated Warrenty</TableColumn>
         </TableHeader>
         <TableBody>
-          {allDevices.map((device) => (
+          {devices.map((device: any) => (
             <TableRow key={`device-${device._id}`}>
               <TableCell>{device.deviceName}</TableCell>
               <TableCell>{device.nickname}</TableCell>
@@ -80,6 +83,9 @@ export default function DevicesTable() {
                 {device.lastEnvUpdated
                   ? dayjs(device.lastEnvUpdated).format("DD-MM-YYYY hh:mm A")
                   : "-----"}
+              </TableCell>
+              <TableCell className="flex justify-center">
+               <UpdateWarrenty device={device}/>
               </TableCell>
             </TableRow>
           ))}
