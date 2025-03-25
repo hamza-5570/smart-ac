@@ -38,6 +38,7 @@ export default function DevicesTable() {
       </div>
     );
   const { devices, message } = devicesData;
+  console.log("devices",devices)
 
   if (!devices.length)
     return (
@@ -58,28 +59,29 @@ export default function DevicesTable() {
       <Table aria-label="Devices Table">
         <TableHeader>
           <TableColumn>Device Name</TableColumn>
-          <TableColumn>Nickname</TableColumn>
+          <TableColumn>Owner</TableColumn>
           <TableColumn>Code Name</TableColumn>
           <TableColumn>Provider</TableColumn>
           <TableColumn>Serial No.</TableColumn>
-          <TableColumn>Last Updated</TableColumn>
           <TableColumn>Updated Warrenty</TableColumn>
         </TableHeader>
         <TableBody>
           {devices.map((device: any) => (
             <TableRow key={`device-${device._id}`}>
               <TableCell>{device.deviceName}</TableCell>
-              <TableCell>{device.nickname}</TableCell>
+              <TableCell className="flex flex-col ">
+                {device?.user?.name}
+                {device?.user?.email && (
+                    <Code className="mt-1 text-xs w-fit">{device?.user?.email}</Code>
+                )}
+              
+              </TableCell>
               <TableCell>
                 <Code>{device.codeName}</Code>
               </TableCell>
               <TableCell>{device.provider}</TableCell>
               <TableCell>{device.deviceSerial}</TableCell>
-              <TableCell>
-                {device.lastEnvUpdated
-                  ? dayjs(device.lastEnvUpdated).format("DD-MM-YYYY hh:mm A")
-                  : "-----"}
-              </TableCell>
+              
               <TableCell className="flex justify-center">
                <UpdateWarrenty device={device}/>
               </TableCell>
