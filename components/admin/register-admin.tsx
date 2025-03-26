@@ -8,31 +8,27 @@ import {
 } from "@heroui/modal";
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import AdminForm from "./admin-form";
+import { AdminPayload, createAdmin as createAdminApi } from "@/services/user-api";
 import { addToast } from "@heroui/toast";
-import FirmWareForm from "./firmware-form";
-import { registerFirm } from "@/services/firmware-api";
 
-export default function RegisterFirmware() {
+export default function RegisterAdmin() {
   const [isOpen, setIsOpen] = useState(false);
-  const [file,setFile]=useState<any>(null)
   const queryClient = useQueryClient();
   const { mutate, isPending } = useMutation({
-    mutationFn: (data: any) => registerFirm(data),
+    mutationFn: (data: AdminPayload) => createAdminApi(data),
   });
 
-  const handleSubmit = (data: any) => {
-
-    const formdata=new FormData()
-    formdata.append('version',data.version)
-    formdata.append('firmwareFile',file)
-    mutate(formdata, {
+  const handleSubmit = (data: AdminPayload) => {
+    console.log("data", data);
+    mutate(data, {
       onSuccess: (res) => {
         addToast({
           title: "Success",
           description: res.message,
           color: "success",
         });
-        queryClient.invalidateQueries({ queryKey: ["firm-list"] });
+        queryClient.invalidateQueries({ queryKey: ["users-list"] });
         setIsOpen(false);
       },
       onError: (err) => {
@@ -43,7 +39,7 @@ export default function RegisterFirmware() {
         });
       },
     });
-};
+  };
 
   return (
     <>
@@ -52,16 +48,16 @@ export default function RegisterFirmware() {
         color="secondary"
         onPress={() => setIsOpen(true)}
       >
-        Upload Firmware
+        Register New Admin
       </Button>
       <Modal size="xl" isOpen={isOpen} onOpenChange={setIsOpen}>
         <ModalContent>
-          <ModalHeader>Upload Firmware</ModalHeader>
+          <ModalHeader>Register New Admin</ModalHeader>
           <ModalBody className="pt-6">
-            <FirmWareForm setFile={setFile} onSubmit={handleSubmit} />
+            <AdminForm onSubmit={handleSubmit} />
           </ModalBody>
           <ModalFooter>
-            <Button onPress={()=>{setIsOpen(false)}} type="button" variant="ghost">
+            <Button type="button" variant="ghost">
               Cancel
             </Button>
             <Button
@@ -70,7 +66,7 @@ export default function RegisterFirmware() {
               type="submit"
               color="secondary"
             >
-              Upload File
+              Register Admin
             </Button>
           </ModalFooter>
         </ModalContent>

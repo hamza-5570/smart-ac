@@ -38,7 +38,6 @@ export default function DevicesTable() {
       </div>
     );
   const { devices, message } = devicesData;
-  console.log("devices",devices)
 
   if (!devices.length)
     return (
@@ -60,14 +59,14 @@ export default function DevicesTable() {
         <TableHeader>
           <TableColumn>Device Name</TableColumn>
           <TableColumn>Owner</TableColumn>
-          <TableColumn>Code Name</TableColumn>
+          <TableColumn>Warrenty Status</TableColumn>
           <TableColumn>Provider</TableColumn>
           <TableColumn>Serial No.</TableColumn>
           <TableColumn>Updated Warrenty</TableColumn>
         </TableHeader>
         <TableBody>
           {devices.map((device: any) => (
-            <TableRow key={`device-${device._id}`}>
+            <TableRow className="border-b" key={`device-${device._id}`}>
               <TableCell>{device.deviceName}</TableCell>
               <TableCell className="flex flex-col ">
                 {device?.user?.name}
@@ -82,7 +81,7 @@ export default function DevicesTable() {
               <TableCell>{device.provider}</TableCell>
               <TableCell>{device.deviceSerial}</TableCell>
               
-              <TableCell className="flex justify-center">
+              <TableCell className="flex  justify-center">
                <UpdateWarrenty device={device}/>
               </TableCell>
             </TableRow>

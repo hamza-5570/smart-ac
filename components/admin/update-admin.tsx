@@ -8,31 +8,34 @@ import {
 } from "@heroui/modal";
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import AdminForm from "./admin-form";
+import { AdminPayload, updateUser as updateUserApi } from "@/services/user-api";
 import { addToast } from "@heroui/toast";
-import FirmWareForm from "./firmware-form";
-import { registerFirm } from "@/services/firmware-api";
+import { LuPenLine } from "react-icons/lu";
 
-export default function RegisterFirmware() {
+export default function UpdateAdmin({userId,user}: {userId: string, user: AdminPayload}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [file,setFile]=useState<any>(null)
   const queryClient = useQueryClient();
   const { mutate, isPending } = useMutation({
-    mutationFn: (data: any) => registerFirm(data),
+    mutationFn: (data: & {
+        _id: string;
+        blocked: "No" | "Admin_Block" | "User_Block" | "All_Block";
+      }) => updateUserApi(data),
   });
 
-  const handleSubmit = (data: any) => {
 
-    const formdata=new FormData()
-    formdata.append('version',data.version)
-    formdata.append('firmwareFile',file)
-    mutate(formdata, {
+  const handleSubmit = (data: AdminPayload & {
+    _id: string;
+    blocked: "No" | "Admin_Block" | "User_Block" | "All_Block";
+  }) => {
+    mutate({...data, _id: userId}, {
       onSuccess: (res) => {
         addToast({
           title: "Success",
           description: res.message,
           color: "success",
         });
-        queryClient.invalidateQueries({ queryKey: ["firm-list"] });
+        queryClient.invalidateQueries({ queryKey: ["users-list"] });
         setIsOpen(false);
       },
       onError: (err) => {
@@ -43,25 +46,27 @@ export default function RegisterFirmware() {
         });
       },
     });
-};
+  };
 
   return (
     <>
+    
       <Button
-        variant="shadow"
-        color="secondary"
+        variant='flat'
+        className="w-fit"
+        isIconOnly
         onPress={() => setIsOpen(true)}
       >
-        Upload Firmware
+        <LuPenLine size={18} className="w-fit"/>
       </Button>
-      <Modal size="xl" isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Modal size="xl" isOpen={isOpen} onOpenChange={setIsOpen} isDismissable={false}>
         <ModalContent>
-          <ModalHeader>Upload Firmware</ModalHeader>
+          <ModalHeader>Update Admin</ModalHeader>
           <ModalBody className="pt-6">
-            <FirmWareForm setFile={setFile} onSubmit={handleSubmit} />
+            <AdminForm  isShowSelect={true} defaultValues={user}  onSubmit={handleSubmit} />
           </ModalBody>
           <ModalFooter>
-            <Button onPress={()=>{setIsOpen(false)}} type="button" variant="ghost">
+            <Button onPress={() => setIsOpen(false)} type="button" variant="ghost">
               Cancel
             </Button>
             <Button
@@ -70,7 +75,7 @@ export default function RegisterFirmware() {
               type="submit"
               color="secondary"
             >
-              Upload File
+              Update Admin
             </Button>
           </ModalFooter>
         </ModalContent>

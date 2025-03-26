@@ -60,7 +60,7 @@ export default function RemotesTable() {
         </TableHeader>
         <TableBody>
           {remotes.map((remote: any) => (
-            <TableRow key={`remote-${remote._id}`}>
+            <TableRow className="border-b" key={`remote-${remote._id}`}>
               <TableCell>{remote.name}</TableCell>
               <TableCell>{remote.model}</TableCell>
               <TableCell>{remote.year}</TableCell>

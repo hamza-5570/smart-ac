@@ -85,4 +85,4 @@ export {
   testAccess,
 };
 
-export type { LoginPayload, SignUpPayload };
+export type { LoginPayload, SignUpPayload,ForgotPasswordPayload,ResetPaswordPayload };

@@ -71,7 +71,6 @@ export default function FirmwareTable({
       <Table aria-label="Devices Table">
         <TableHeader>
           <TableColumn>#</TableColumn>
-          <TableColumn>Account ID</TableColumn>
           <TableColumn>Build</TableColumn>
           <TableColumn>DeviceType</TableColumn>
           <TableColumn>Provider</TableColumn>
@@ -81,16 +80,15 @@ export default function FirmwareTable({
         </TableHeader>
         <TableBody>
           {firmwares.map((firm: any, index: number) => (
-            <TableRow key={`firm-${firm._id}`}>
+            <TableRow className="border-b" key={`firm-${firm._id}`}>
               {/* <TableCell>{calcResultNo(pagination, index)}</TableCell> */}
               <TableCell>{index}</TableCell>
-              <TableCell>{firm._id}</TableCell>
               <TableCell>{firm.build}</TableCell>
               <TableCell>
                 <Code>{firm.deviceType}</Code>
               </TableCell>
               <TableCell>{firm.hardwareProvider}</TableCell>
-              <TableCell>{firm.hardwareVersion}</TableCell>
+              <TableCell>{firm.version}</TableCell>
               <TableCell>
                 {dayjs(firm.createdAt).format("DD-MM-YYYY")}
               </TableCell>

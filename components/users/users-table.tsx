@@ -3,6 +3,8 @@ import { calcResultNo } from "@/utils/helpers";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
 import { Spinner } from "@heroui/spinner";
+import { CgUnblock } from "react-icons/cg";
+
 import {
   Table,
   TableBody,
@@ -13,7 +15,10 @@ import {
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
-
+import { MdBlock } from "react-icons/md";
+import { Tooltip } from "@heroui/tooltip";
+import { LuPencil, LuPenLine } from "react-icons/lu";
+import UpdateAdmin from "../admin/update-admin";
 export default function UsersTable({
   role = "User",
 }: {
@@ -66,12 +71,12 @@ export default function UsersTable({
           <TableColumn>Account ID</TableColumn>
           <TableColumn>Name</TableColumn>
           <TableColumn>Email</TableColumn>
-
           <TableColumn>Created On</TableColumn>
+          <TableColumn>Action</TableColumn>
         </TableHeader>
         <TableBody>
           {users.map((user: any, index: number) => (
-            <TableRow key={`user-${user._id}`}>
+            <TableRow className="border-b" key={`user-${user._id}`}>
               <TableCell>{calcResultNo(pagination, index)}</TableCell>
               <TableCell>{user._id}</TableCell>
               <TableCell>{user.name}</TableCell>
@@ -81,6 +86,9 @@ export default function UsersTable({
 
               <TableCell>
                 {dayjs(user.createdAt).format("DD-MM-YYYY")}
+              </TableCell>
+              <TableCell className="flex gap-x-1">
+                <UpdateAdmin user={user} userId={user._id} />
               </TableCell>
             </TableRow>
           ))}

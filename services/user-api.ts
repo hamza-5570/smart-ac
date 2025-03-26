@@ -57,3 +57,4 @@ async function updateUser(
 }
 
 export { getUsers, getUserDetails, createAdmin, updateUser };
+export type {AdminPayload};

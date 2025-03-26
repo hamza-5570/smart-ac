@@ -1,8 +1,9 @@
-import LoginForm from "@/components/auth/login-form";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+import ForgetPasswordForm from "@/components/auth/forget-password-form";
 
-export default function LoginPage() {
+export default function ForgetPasswordPage() {
   return (
     <section className="flex-1">
       <div className="max-w-md mx-auto space-y-6 p-6 rounded-3xl border dark:border-gray-700">
@@ -18,11 +19,15 @@ export default function LoginPage() {
             Welcome Back
           </h3>
           <p className="text-center text-sm">
-            Sign in to your account to continue
+            Reset your password to continue
           </p>
         </div>
-        <LoginForm />
-        
+        <ForgetPasswordForm />
+        <div>
+          <Link href={'/'} className="text-center  text-[#6938EF] font-medium underline-offset-2 justify-center flex hover:underline cursor-pointer">
+            Back to Home
+          </Link>
+        </div>
       </div>
     </section>
   );
