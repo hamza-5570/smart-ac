@@ -1,4 +1,6 @@
 import axiosClient from "@/utils/axios-client";
+import { BASE_URL } from "@/utils/constants";
+import axios, { AxiosError } from "axios";
 
 type SignUpPayload = {
   name: string;
@@ -23,11 +25,12 @@ type LoginPayload = {
 
 async function login(data: LoginPayload) {
   try {
-    const res = await axiosClient.post("/auth/sign-in", data);
+    const res = await axios.post(BASE_URL + "/auth/sign-in", data);
     return res.data;
   } catch (error) {
-    console.log(error);
-    throw error;
+    if (error instanceof AxiosError) {
+      throw error.response?.data;
+    } else throw error;
   }
 }
 
@@ -85,4 +88,9 @@ export {
   testAccess,
 };
 
-export type { LoginPayload, SignUpPayload,ForgotPasswordPayload,ResetPaswordPayload };
+export type {
+  LoginPayload,
+  SignUpPayload,
+  ForgotPasswordPayload,
+  ResetPaswordPayload,
+};

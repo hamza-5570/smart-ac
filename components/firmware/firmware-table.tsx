@@ -1,4 +1,4 @@
-import { deleteFirmware, getFirmware, registerFirm } from "@/services/firmware-api";
+import { deleteFirmware, getFirmware } from "@/services/firmware-api";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
 import { Modal, ModalContent, ModalFooter, ModalHeader } from "@heroui/modal";
@@ -37,6 +37,27 @@ export default function FirmwareTable({
   const [isOpen, setIsOpen] = useState<any>();
   const queryClient = useQueryClient();
 
+  const handleDelete = (firm: any) => {
+    mutate(firm._id, {
+      onSuccess: (res) => {
+        addToast({
+          title: "Success",
+          description: res.message,
+          color: "success",
+        });
+        queryClient.invalidateQueries({ queryKey: ["firm-list"] });
+        setIsOpen(false);
+      },
+      onError: (err) => {
+        addToast({
+          title: "Error",
+          description: err.message,
+          color: "danger",
+        });
+      },
+    });
+  };
+
   if (isLoading)
     return (
       <div className="h-80 flex items-center justify-center">
@@ -50,8 +71,8 @@ export default function FirmwareTable({
       </div>
     );
 
-  const { firmwares, currentPage, total, totalPages } = firmData;
-  const pagination = { currentPage, totalPages, limit: 10 };
+  const { firmwares, total } = firmData;
+
   if (total === 0)
     return (
       <div className="h-80 flex items-center justify-center">
@@ -80,7 +101,10 @@ export default function FirmwareTable({
         </TableHeader>
         <TableBody>
           {firmwares.map((firm: any, index: number) => (
-            <TableRow className="border-b" key={`firm-${firm._id}`}>
+            <TableRow
+              key={`firm-${firm._id}`}
+              className="even:bg-gray-100 dark:even:bg-neutral-800 rounded-lg"
+            >
               {/* <TableCell>{calcResultNo(pagination, index)}</TableCell> */}
               <TableCell>{index}</TableCell>
               <TableCell>{firm.build}</TableCell>
@@ -94,23 +118,23 @@ export default function FirmwareTable({
               </TableCell>
               <TableCell>
                 <Button
-                  onPress={() => setIsOpen(true)}
                   isIconOnly
                   variant={"flat"}
+                  onPress={() => setIsOpen(true)}
                 >
                   <LuTrash2 size={20} color="red" />
                 </Button>
                 <Modal size="xl" isOpen={isOpen} onOpenChange={setIsOpen}>
-                  <ModalContent >
+                  <ModalContent>
                     <ModalHeader>Remove Firmware</ModalHeader>
                     <h4 className="text-xl text-center  text-[#101828] dark:text-white font-medium font-mono">
                       Are you sure want remove...?
                     </h4>
                     <ModalFooter>
                       <Button
-                        onPress={() => setIsOpen(false)}
                         type="button"
                         variant="ghost"
+                        onPress={() => setIsOpen(false)}
                       >
                         Cancel
                       </Button>
@@ -118,27 +142,8 @@ export default function FirmwareTable({
                         form="device-form"
                         type="submit"
                         color="danger"
-                        onPress={()=>{
-                          mutate(firm._id, {
-                            onSuccess: (res) => {
-                              addToast({
-                                title: "Success",
-                                description: res.message,
-                                color: "success",
-                              });
-                              queryClient.invalidateQueries({ queryKey: ["firm-list"] });
-                              setIsOpen(false);
-                            },
-                            onError: (err) => {
-                              addToast({
-                                title: "Error",
-                                description: err.message,
-                                color: "danger",
-                              });
-                            },
-                          });
-                        }}
                         isLoading={isPending}
+                        onPress={() => handleDelete(firm)}
                       >
                         Delete
                       </Button>

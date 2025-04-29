@@ -1,4 +1,4 @@
-import { getAllDevices,} from "@/services/device-api";
+import { getAllDevices } from "@/services/device-api";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
 import { Spinner } from "@heroui/spinner";
@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
-import dayjs from "dayjs";
+
 import UpdateWarrenty from "./update-warrenty";
 
 export default function DevicesTable() {
@@ -59,30 +59,34 @@ export default function DevicesTable() {
         <TableHeader>
           <TableColumn>Device Name</TableColumn>
           <TableColumn>Owner</TableColumn>
-          <TableColumn>Warrenty Status</TableColumn>
+          <TableColumn>Warranty Status</TableColumn>
           <TableColumn>Provider</TableColumn>
           <TableColumn>Serial No.</TableColumn>
           <TableColumn>Updated Warrenty</TableColumn>
         </TableHeader>
         <TableBody>
           {devices.map((device: any) => (
-            <TableRow className="border-b" key={`device-${device._id}`}>
+            <TableRow
+              key={`device-${device._id}`}
+              className="even:bg-gray-100 dark:even:bg-neutral-800 rounded-lg"
+            >
               <TableCell>{device.deviceName}</TableCell>
-              <TableCell className="flex flex-col ">
+              <TableCell className="flex flex-col">
                 {device?.user?.name}
                 {device?.user?.email && (
-                    <Code className="mt-1 text-xs w-fit">{device?.user?.email}</Code>
+                  <Code className="mt-1 text-xs w-fit">
+                    {device?.user?.email}
+                  </Code>
                 )}
-              
               </TableCell>
               <TableCell>
                 <Code>{device.codeName}</Code>
               </TableCell>
               <TableCell>{device.provider}</TableCell>
               <TableCell>{device.deviceSerial}</TableCell>
-              
+
               <TableCell className="flex  justify-center">
-               <UpdateWarrenty device={device}/>
+                <UpdateWarrenty device={device} />
               </TableCell>
             </TableRow>
           ))}

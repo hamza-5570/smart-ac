@@ -3,7 +3,6 @@ import { calcResultNo } from "@/utils/helpers";
 import { Button } from "@heroui/button";
 import { Code } from "@heroui/code";
 import { Spinner } from "@heroui/spinner";
-import { CgUnblock } from "react-icons/cg";
 
 import {
   Table,
@@ -15,9 +14,6 @@ import {
 } from "@heroui/table";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
-import { MdBlock } from "react-icons/md";
-import { Tooltip } from "@heroui/tooltip";
-import { LuPencil, LuPenLine } from "react-icons/lu";
 import UpdateAdmin from "../admin/update-admin";
 export default function UsersTable({
   role = "User",
@@ -76,7 +72,10 @@ export default function UsersTable({
         </TableHeader>
         <TableBody>
           {users.map((user: any, index: number) => (
-            <TableRow className="border-b" key={`user-${user._id}`}>
+            <TableRow
+              key={`user-${user._id}`}
+              className="even:bg-gray-100 dark:even:bg-neutral-800 rounded-lg"
+            >
               <TableCell>{calcResultNo(pagination, index)}</TableCell>
               <TableCell>{user._id}</TableCell>
               <TableCell>{user.name}</TableCell>

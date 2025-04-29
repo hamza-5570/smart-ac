@@ -16,12 +16,19 @@ export default function LoginForm() {
     mutationFn: (data: LoginPayload) => loginApi(data),
   });
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
+    console.log(e.currentTarget);
 
-    login(data as LoginPayload, {
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const email = formData.get("email")?.toString() ?? "";
+    const password = formData.get("password")?.toString() ?? "";
+
+    const payload: LoginPayload = { email, password };
+
+    login(payload, {
       onSuccess: (res) => {
         localStorage.setItem("access_token", res.data.token);
         addToast({
@@ -29,7 +36,6 @@ export default function LoginForm() {
           description: res.message,
           color: "success",
         });
-        form.reset();
         router.replace("/");
       },
       onError: (err) => {
