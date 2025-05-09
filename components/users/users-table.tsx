@@ -17,8 +17,10 @@ import dayjs from "dayjs";
 import UpdateAdmin from "../admin/update-admin";
 export default function UsersTable({
   role = "User",
+  label,
 }: {
   role?: "User" | "Admin";
+  label?: string;
 }) {
   const {
     data: usersData,
@@ -87,7 +89,7 @@ export default function UsersTable({
                 {dayjs(user.createdAt).format("DD-MM-YYYY")}
               </TableCell>
               <TableCell className="flex gap-x-1">
-                <UpdateAdmin user={user} userId={user._id} />
+                <UpdateAdmin user={user} userId={user._id} label={label} />
               </TableCell>
             </TableRow>
           ))}

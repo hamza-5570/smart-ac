@@ -19,7 +19,7 @@ export default function AdminsPage() {
         <RegisterAdmin />
       </div>
       <div className="mt-8">
-        <UsersTable role="Admin" />
+        <UsersTable role="Admin" label="Admin" />
       </div>
     </div>
   );

@@ -9,7 +9,10 @@ import {
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import AdminForm from "./admin-form";
-import { AdminPayload, createAdmin as createAdminApi } from "@/services/user-api";
+import {
+  AdminPayload,
+  createAdmin as createAdminApi,
+} from "@/services/user-api";
 import { addToast } from "@heroui/toast";
 
 export default function RegisterAdmin() {
@@ -32,9 +35,14 @@ export default function RegisterAdmin() {
         setIsOpen(false);
       },
       onError: (err) => {
+        const errorResponse = err as {
+          response?: { data?: { message?: string } };
+        };
         addToast({
           title: "Error",
-          description: err.message,
+          description:
+            errorResponse.response?.data?.message ||
+            "An unexpected error occurred",
           color: "danger",
         });
       },

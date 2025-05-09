@@ -12,7 +12,7 @@ export default function UsersPage() {
         Users Details
       </p>
       <div className="mt-8">
-        <UsersTable />
+        <UsersTable label="User" />
       </div>
     </div>
   );
