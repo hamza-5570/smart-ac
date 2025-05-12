@@ -65,7 +65,11 @@ export default function RegisterAdmin() {
             <AdminForm onSubmit={handleSubmit} />
           </ModalBody>
           <ModalFooter>
-            <Button type="button" variant="ghost">
+            <Button
+              type="button"
+              variant="ghost"
+              onPress={() => setIsOpen(false)}
+            >
               Cancel
             </Button>
             <Button
