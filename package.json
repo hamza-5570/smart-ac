@@ -11,6 +11,7 @@
   "dependencies": {
     "@bprogress/next": "^3.2.10",
     "@heroui/button": "2.2.9",
+    "node-fetch": "^3.3.2",
     "@heroui/card": "^2.2.10",
     "@heroui/chip": "^2.2.10",
     "@heroui/code": "^2.2.6",
